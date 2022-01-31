@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Task;
 
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 use App\Printer;
 
 class Taskv1
@@ -15,23 +17,24 @@ class Taskv1
         for($i = $start; $i <= $end; $i++)
         {
             if ($i % 3 === 0) {
-                $return[$i] = 'pa'. ' ';
+                $return[$i] = 'pa';
             }
 
             if ($i % 5 === 0) {
-                $return[$i] = 'pow'. ' ';
+                $return[$i] = 'pow';
             }
 
             if ($i % 3 === 0 && $i % 5 === 0) {
-                $return[$i] = 'papow'. ' ';
+                $return[$i] = 'papow';
             }
 
             if (!($i % 3  === 0) && !($i % 5 === 0) && !($i % 3 === 0 && $i % 5 === 0)) {
-                $return[$i] = $i. ' ';
+                $return[$i] = $i;
             }
 
-            return $return;
         }
+
+        return $return;
     }
 }
 

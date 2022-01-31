@@ -6,8 +6,8 @@ namespace App;
 
 class Printer
 {    
-    public function print(array $array) {
-        array_walk($array, fn ($value) => print $value);
-        echo PHP_EOL;
+    public function print(array $array): void
+    {
+        echo implode(' ', $array) . PHP_EOL;
     }
 }
