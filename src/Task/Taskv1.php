@@ -16,22 +16,17 @@ class Taskv1
         
         for($i = $start; $i <= $end; $i++)
         {
+            $buffer = '';
+
             if ($i % 3 === 0) {
-                $return[$i] = 'pa';
+                $buffer .= 'pa';
             }
 
             if ($i % 5 === 0) {
-                $return[$i] = 'pow';
+                $buffer .= 'pow';
             }
 
-            if ($i % 3 === 0 && $i % 5 === 0) {
-                $return[$i] = 'papow';
-            }
-
-            if (!($i % 3  === 0) && !($i % 5 === 0) && !($i % 3 === 0 && $i % 5 === 0)) {
-                $return[$i] = $i;
-            }
-
+            $return[] = $buffer === '' ? $i : $buffer;
         }
 
         return $return;
