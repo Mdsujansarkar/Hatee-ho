@@ -1,36 +1,30 @@
 <?php 
+
 declare(strict_types=1);
 
-namespace App;
-use App\Taskv1;
+namespace App\Task;
 
 class Taskv3
 {
-
-    public function task_three()
+    public function generate(int $start, int $end, string $glue): string
     {
+        $parts = [];
+        
+        for($i = $start; $i <= $end; $i++)
+        {
+            $buffer = '';
 
-        $arrayStore = [];
-        $arrayAnother =[];
-        $array = [1,2,3,4,5,6,7,8,9,10];
-        $arraySecound = [1,4,9];
-        $result = array_intersect($array, $arraySecound);
-        if ($result) {
-        foreach ($result as $value) {
-        $arrayStore[] = 'joff';
-        $arrayAnother[] =$value;
-        }
-        }
-        foreach($array as $data){
-        if($data > 5){
-        $arrayStore[] = 'tchoff';
-        $arrayAnother[] =$data;
+            if (in_array($i, [1, 4, 9], true)) {
+                $buffer .= 'joff';
             }
+
+            if ($i > 5) {
+                $buffer .= 'tchoff';
+            }
+
+            $parts[] = $buffer === '' ? (string) $i : $buffer;
         }
-        echo implode('-',$arrayStore);
-    
+
+        return implode($glue, $parts);
     }
 }
-
-$ob = new Taskv3();
-$ob ->task_three();

@@ -4,15 +4,11 @@ declare(strict_types=1);
 
 namespace App\Task;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
-use App\Printer;
-
 class Taskv1
 {
-    public function generate(int $start, int $end)
+    public function generate(int $start, int $end, string $glue): string
     {
-        $return = [];
+        $parts = [];
         
         for($i = $start; $i <= $end; $i++)
         {
@@ -26,15 +22,9 @@ class Taskv1
                 $buffer .= 'pow';
             }
 
-            $return[] = $buffer === '' ? $i : $buffer;
+            $parts[] = $buffer === '' ? (string) $i : $buffer;
         }
 
-        return $return;
+        return implode($glue, $parts);
     }
 }
-
-$printer = new Printer();
-
-$ob = new Taskv1();
-$printer->print($ob->generate(1, 20));
-$printer->print($ob->generate(1, 10));

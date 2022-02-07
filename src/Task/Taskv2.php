@@ -1,41 +1,30 @@
 <?php 
+
 declare(strict_types=1);
 
-namespace App;
-
-use App\Taskv1;
+namespace App\Task;
 
 class Taskv2
 {
-    public $arrayList = [];
-    public function task_two()
+    public function generate(int $start, int $end, string $glue): string
     {
-        for($i = 1; $i <= 15; $i++)
+        $parts = [];
+        
+        for($i = $start; $i <= $end; $i++)
         {
+            $buffer = '';
 
-            if($i % 2 == 0)
-            {
-                $this->arrayList[$i] = 'hatee';
+            if ($i % 2 === 0) {
+                $buffer .= 'hatee';
             }
-            if($i % 7 == 0)
-            {
-                $this->arrayList[$i] = 'ho';
+
+            if ($i % 7 === 0) {
+                $buffer .= 'ho';
             }
-            if($i % 2 == 0 && $i % 7 == 0)
-            {
-                $this->arrayList[$i] = 'hateeho';
-            }
-            if(!($i % 2 == 0) && !($i % 7 == 0) && !($i % 2 == 0 && $i % 7 == 0))
-            {
-                $this->arrayList[$i] = $i;
-            }
+
+            $parts[] = $buffer === '' ? (string) $i : $buffer;
         }
-        
-            echo implode('-',$this->arrayList);
 
-        
+        return implode($glue, $parts);
     }
 }
-
-$ob = new Taskv2();
-$ob ->task_two();
