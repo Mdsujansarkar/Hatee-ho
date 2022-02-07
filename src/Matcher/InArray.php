@@ -11,7 +11,7 @@ class InArray implements MatcherInterface
     /**
      * @inheritdoc
      */
-    public function match(int $value, mixed $against): bool
+    public function match(int $value, $against): bool
     {
         if (!is_array($against)) {
             throw new InvalidArgumentException('Argument against is not an array');

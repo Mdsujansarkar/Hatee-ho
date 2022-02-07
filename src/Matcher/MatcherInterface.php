@@ -9,5 +9,5 @@ namespace App\Matcher;
  */
 interface MatcherInterface
 {
-    public function match(int $value, mixed $against): bool;
+    public function match(int $value, $against): bool;
 }
