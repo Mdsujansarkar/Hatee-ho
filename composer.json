@@ -20,6 +20,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "phpunit/phpunit": "9.5.x-dev"
+        "phpunit/phpunit": "9.5.x-dev",
+        "symfony/var-dumper": "5.4.x-dev"
     }
 }

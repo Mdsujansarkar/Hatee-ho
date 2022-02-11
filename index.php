@@ -14,23 +14,17 @@ $inArray = new InArray();
 
 $task = new Task();
 
-$configs = [
+echo $task->generate(1, 20, ' ', [
     new MatcherConfig($dividesBy, 3, 'pa'),
     new MatcherConfig($dividesBy, 5, 'pow'),
-];
+]) . PHP_EOL;
 
-echo $task->generate(1, 15, ' ', $configs) . PHP_EOL;
-
-$configs = [
+echo $task->generate(1, 15, '-', [
     new MatcherConfig($dividesBy, 2, 'hatee'),
     new MatcherConfig($dividesBy, 7, 'ho'),
-];
+]) . PHP_EOL;
 
-echo $task->generate(1, 20, '-', $configs) . PHP_EOL;
-
-$configs = [
-    new MatcherConfig($inArray, [1, 4, 9], 'joff'),
+echo $task->generate(1, 10, '-', [
+    new MatcherConfig($inArray, [1, 3, 9], 'joff'),
     new MatcherConfig($greaterThan, 5, 'tchoff'),
-];
-
-echo $task->generate(1, 15, ' ', $configs) . PHP_EOL;
+]) . PHP_EOL;

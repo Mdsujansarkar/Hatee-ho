@@ -9,9 +9,9 @@ use App\ValueObject\MatcherConfig;
 class Task
 {
     /**
-     * @param MatcherConfig[] $matcherConfigs
+     * @param MatcherConfig[] $configs
      */
-    public function generate(int $start, int $end, string $glue, array $matcherConfigs): string
+    public function generate(int $start, int $end, string $glue, array $configs): string
     {
         $parts = [];
         
@@ -19,13 +19,13 @@ class Task
         {
             $buffer = '';
 
-            foreach ($matcherConfigs as $matcherConfig) {
-                if ($matcherConfig->getMatcher()->match($i, $matcherConfig->getAgainst())) {
-                    $buffer .= $matcherConfig->getWord();
+            foreach ($configs as $config) {
+                if ($config->getMatcher()->match($i, $config->getAgainst())) {
+                    $buffer .= $config->getWord();
                 }
             }
-
-            $parts[] = $buffer === '' ? (string) $i : $buffer;
+            
+            $parts[] = $buffer === '' ? $i : $buffer;
         }
 
         return implode($glue, $parts);

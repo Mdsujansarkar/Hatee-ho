@@ -15,8 +15,8 @@ class MatcherConfig
     public function __construct(MatcherInterface $matcher, $against, string $word)
     {
         $this->matcher = $matcher;
-        $this->word = $word;
         $this->against = $against;
+        $this->word = $word;
     }
 
     public function getMatcher(): MatcherInterface
